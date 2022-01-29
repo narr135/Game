@@ -8,6 +8,13 @@ public class Player2Movement : MonoBehaviour
     public CharacterController2 controller;
     public Animator animator;
     public float runSpeed = 20f;
+    [Header("Attack Properties")]
+    [SerializeField]
+    private Transform _attackPoint;
+    [SerializeField]
+    private float _attackRange;
+    [SerializeField]
+    private LayerMask _attackMask;
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
@@ -17,11 +24,23 @@ public class Player2Movement : MonoBehaviour
 
     }
 
+    // private void OnDrawGizmos()
+    // {
+    //     if (_attackPoint is null){
+    //         return;
+    //     }
+
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
+    // }
+
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal2") * runSpeed;
 
         animator.SetFloat("Speed2", Mathf.Abs(horizontalMove));
+
+        // OnDrawGizmos();
 
         if (Input.GetButtonDown("Jump2")) {
             jump = true;
