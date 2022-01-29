@@ -63,7 +63,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: Health2
-    m_EventTreshold: 0.01
+    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7370694547996628402}
   m_Solo: 0
@@ -261,9 +261,9 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: Health2
-    m_Type: 1
-    m_DefaultFloat: 100
-    m_DefaultInt: 0
+    m_Type: 3
+    m_DefaultFloat: 0
+    m_DefaultInt: 100
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: isAttacked2
