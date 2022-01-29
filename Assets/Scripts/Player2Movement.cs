@@ -14,7 +14,7 @@ public class Player2Movement : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -23,19 +23,28 @@ public class Player2Movement : MonoBehaviour
 
         animator.SetFloat("Speed2", Mathf.Abs(horizontalMove));
 
-        if (Input.GetButtonDown("Jump2")){
+        if (Input.GetButtonDown("Jump2")) {
             jump = true;
         }
 
-        if (Input.GetButtonDown("Crouch2")){
+        if (Input.GetButtonDown("Fire2")) {
+            animator.SetBool("isAttacking2", true);
+        }
+
+        if (Input.GetButtonDown("Crouch2")) {
             crouch = true;
         }
-        else if (Input.GetButtonUp("Crouch2")){
+        else if (Input.GetButtonUp("Crouch2")) {
             crouch = false;
         }
     }
 
-    void FixedUpdate () 
+    public void onAttacking2()
+    {
+        animator.SetBool("isAttacking2", false);
+    }
+
+    void FixedUpdate ()
     {
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
         jump = false;

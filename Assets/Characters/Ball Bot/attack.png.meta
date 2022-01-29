@@ -26,6 +26,12 @@ TextureImporter:
   - first:
       213: 1003614653818381368
     second: attack_24
+  - first:
+      213: 827538889749247048
+    second: attack_25
+  - first:
+      213: -5010287565412364656
+    second: attack_26
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -290,6 +296,48 @@ TextureImporter:
       bones: []
       spriteID: 834a834d53e8ded00800000000000000
       internalID: 1003614653818381368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 70
+        width: 38
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84433595c320c7b00800000000000000
+      internalID: 827538889749247048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 36
+        width: 25
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09e0a014102e77ab0800000000000000
+      internalID: -5010287565412364656
       vertices: []
       indices: 
       edges: []

@@ -27,12 +27,21 @@ public class Player1Movement : MonoBehaviour
             jump = true;
         }
 
+        if (Input.GetButtonDown("Fire1")) {
+            animator.SetBool("isAttacking", true);
+        }
+
         if (Input.GetButtonDown("Crouch")){
             crouch = true;
         }
         else if (Input.GetButtonUp("Crouch")){
             crouch = false;
         }
+    }
+
+    public void onAttacking()
+    {
+        animator.SetBool("isAttacking", false);
     }
 
     void FixedUpdate () 
