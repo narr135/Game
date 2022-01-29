@@ -317,12 +317,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60c86d5d80bad248b060d140304194d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   controller: {fileID: 64182907}
   animator: {fileID: 64182909}
   runSpeed: 20
   _attackPoint: {fileID: 935320611}
-  _attackRange: 0.85
-  attackMask:
+  _attackRange: 1
+  _attackMask:
     serializedVersion: 2
     m_Bits: 64
 --- !u!95 &64182909
@@ -1101,7 +1102,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935320610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.121, y: -0.007, z: 0}
+  m_LocalPosition: {x: 0.05, y: -0.007, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 64182905}
@@ -1380,7 +1381,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098878513}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.039, y: -0.037, z: 0}
+  m_LocalPosition: {x: -0.058, y: -0.037, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1292332446}
@@ -1726,11 +1727,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a33660568130147af4cd82f5845e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   controller: {fileID: 1292332448}
   animator: {fileID: 1292332450}
   runSpeed: 20
   _attackPoint: {fileID: 1098878514}
-  _attackRange: 0.7
+  _attackRange: 0.5
   _attackMask:
     serializedVersion: 2
     m_Bits: 64

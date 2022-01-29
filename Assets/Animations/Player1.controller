@@ -73,6 +73,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: isAttacked
     m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: Speed
+    m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 96995694691206374}
   m_Solo: 0
@@ -98,6 +101,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: isAttacking
     m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: Speed
+    m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 96995694691206374}
   m_Solo: 0
@@ -272,6 +278,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: isAttacking
     m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: Speed
+    m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3489166578618062331}
   m_Solo: 0
@@ -405,6 +414,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: isAttacked
     m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: Speed
+    m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3489166578618062331}
   m_Solo: 0
