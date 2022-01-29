@@ -1,25 +1,31 @@
 fileFormatVersion: 2
-guid: 57e7dede97e4d8e4bb73b41463c7ada6
+guid: 393b0d2a81cd87648b8a2930b0e7a80e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9192638271177797499
-    second: death_0
+      213: -5463148037355797382
+    second: attack_2
   - first:
-      213: 8559509556701815258
-    second: death_1
+      213: -5569035362507985257
+    second: attack_6
   - first:
-      213: -5286180679089938723
-    second: death_2
+      213: -3996406334776252399
+    second: attack_9
   - first:
-      213: -1891855120789479077
-    second: death_3
+      213: 4918900733310490901
+    second: attack_10
   - first:
-      213: -5582970244224541034
-    second: death_4
+      213: -1910202648154200349
+    second: attack_14
   - first:
-      213: 830680230883465780
-    second: death_5
+      213: 5831363709815067099
+    second: attack_18
+  - first:
+      213: 8614114879405568219
+    second: attack_23
+  - first:
+      213: 1003614653818381368
+    second: attack_24
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,127 +127,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: death_0
+      name: attack_2
       rect:
         serializedVersion: 2
-        x: 10
-        y: 131
-        width: 23
-        height: 16
+        x: 55
+        y: 275
+        width: 67
+        height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58059c172303d6080800000000000000
-      internalID: -9192638271177797499
+      spriteID: a7409061ecffe24b0800000000000000
+      internalID: -5463148037355797382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_1
+      name: attack_6
       rect:
         serializedVersion: 2
-        x: 7
-        y: 105
-        width: 27
-        height: 20
+        x: 55
+        y: 235
+        width: 69
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad1e5c2779c79c670800000000000000
-      internalID: 8559509556701815258
+      spriteID: 79e6f1408dfc6b2b0800000000000000
+      internalID: -5569035362507985257
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_2
+      name: attack_9
       rect:
         serializedVersion: 2
-        x: 6
-        y: 79
-        width: 22
-        height: 17
+        x: 59
+        y: 159
+        width: 67
+        height: 29
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dde9f440ea6b3a6b0800000000000000
-      internalID: -5286180679089938723
+      spriteID: 1186a85cc99e988c0800000000000000
+      internalID: -3996406334776252399
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_3
+      name: attack_10
       rect:
         serializedVersion: 2
-        x: 5
-        y: 53
-        width: 24
-        height: 11
+        x: 59
+        y: 196
+        width: 66
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b51e6d68ac7ceb5e0800000000000000
-      internalID: -1891855120789479077
+      spriteID: 519516ec722734440800000000000000
+      internalID: 4918900733310490901
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_4
+      name: attack_14
       rect:
         serializedVersion: 2
-        x: 5
-        y: 27
-        width: 24
-        height: 11
+        x: 45
+        y: 119
+        width: 75
+        height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69e9b69842e4582b0800000000000000
-      internalID: -5582970244224541034
+      spriteID: 3e622cbefc89d75e0800000000000000
+      internalID: -1910202648154200349
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_5
+      name: attack_18
       rect:
         serializedVersion: 2
-        x: 5
-        y: 1
-        width: 24
-        height: 11
+        x: 43
+        y: 78
+        width: 79
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43a9fb3d44b278b00800000000000000
-      internalID: 830680230883465780
+      spriteID: bd191afe56a2de050800000000000000
+      internalID: 5831363709815067099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack_23
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 39
+        width: 79
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd03061e7db7b8770800000000000000
+      internalID: 8614114879405568219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack_24
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 0
+        width: 69
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 834a834d53e8ded00800000000000000
+      internalID: 1003614653818381368
       vertices: []
       indices: 
       edges: []

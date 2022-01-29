@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Player2Movement : MonoBehaviour
 {
+
     public CharacterController2 controller;
+    public Animator animator;
     public float runSpeed = 20f;
     float horizontalMove = 0f;
     bool jump = false;
@@ -18,6 +20,9 @@ public class Player2Movement : MonoBehaviour
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal2") * runSpeed;
+
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+        
         if (Input.GetButtonDown("Jump2")){
             jump = true;
         }

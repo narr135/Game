@@ -1,19 +1,22 @@
 fileFormatVersion: 2
-guid: dd6d6659418c85b4f9fad0331db6cbb4
+guid: 52c3ef8b38c7ca2498ba44cbd8ce19dc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3296362929794034626
-    second: shoot_0
+      213: -5286180679089938723
+    second: death_2
   - first:
-      213: 629617002330759104
-    second: shoot_2
+      213: 830680230883465780
+    second: death_5
   - first:
-      213: -6689487139077109850
-    second: shoot_5
+      213: 2602597460433512539
+    second: death_8
   - first:
-      213: -5908579569834704231
-    second: shoot_6
+      213: -5121890589552714621
+    second: death_11
+  - first:
+      213: 7975919600420608313
+    second: death_14
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,11 +118,53 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shoot_0
+      name: death_2
       rect:
         serializedVersion: 2
-        x: 15
-        y: 79
+        x: 50
+        y: 163
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dde9f440ea6b3a6b0800000000000000
+      internalID: -5286180679089938723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death_5
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 124
+        width: 32
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43a9fb3d44b278b00800000000000000
+      internalID: 830680230883465780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death_8
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 85
         width: 35
         height: 22
       alignment: 0
@@ -129,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e345cd65167f042d0800000000000000
-      internalID: -3296362929794034626
+      spriteID: b582972e9984e1420800000000000000
+      internalID: 2602597460433512539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shoot_2
+      name: death_11
       rect:
         serializedVersion: 2
-        x: 14
-        y: 52
-        width: 36
-        height: 24
+        x: 44
+        y: 46
+        width: 37
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0cf9878e359dcb800800000000000000
-      internalID: 629617002330759104
+      spriteID: 38c5b4f45a36be8b0800000000000000
+      internalID: -5121890589552714621
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shoot_5
+      name: death_14
       rect:
         serializedVersion: 2
-        x: 15
-        y: 1
-        width: 35
-        height: 26
+        x: 44
+        y: 7
+        width: 33
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,29 +216,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a7c3c1b3ea2a23a0800000000000000
-      internalID: -6689487139077109850
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shoot_6
-      rect:
-        serializedVersion: 2
-        x: 15
-        y: 27
-        width: 35
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9924fdcaf22800ea0800000000000000
-      internalID: -5908579569834704231
+      spriteID: 939552c4e9820be60800000000000000
+      internalID: 7975919600420608313
       vertices: []
       indices: 
       edges: []
