@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player1Movement : MonoBehaviour
+public class Player2Movement : MonoBehaviour
 {
-
-    public CharacterController1 controller;
+    public CharacterController2 controller;
     public float runSpeed = 20f;
     float horizontalMove = 0f;
     bool jump = false;
@@ -18,15 +17,15 @@ public class Player1Movement : MonoBehaviour
 
     void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-        if (Input.GetButtonDown("Jump")){
+        horizontalMove = Input.GetAxisRaw("Horizontal2") * runSpeed;
+        if (Input.GetButtonDown("Jump2")){
             jump = true;
         }
 
-        if (Input.GetButtonDown("Crouch")){
+        if (Input.GetButtonDown("Crouch2")){
             crouch = true;
         }
-        else if (Input.GetButtonUp("Crouch")){
+        else if (Input.GetButtonUp("Crouch2")){
             crouch = false;
         }
     }
