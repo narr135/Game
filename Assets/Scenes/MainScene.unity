@@ -158,9 +158,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.004964024, y: -0.014775152}
+  m_Offset: {x: 0.004964024, y: -0.014797015}
   serializedVersion: 2
-  m_Radius: 0.059325915
+  m_Radius: 0.059347775
 --- !u!61 &64182903
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -246,7 +246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64182901}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.388, y: -1.105, z: 0}
+  m_LocalPosition: {x: -2.382, y: -1.105, z: 0}
   m_LocalScale: {x: 2.562219, y: 2.6664, z: 1}
   m_Children:
   - {fileID: 633855310}
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0c92458dda21ca4bb5ae3a218b1ee20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 700
+  m_JumpForce: 400
   m_CrouchSpeed: 0.4
   m_MovementSmoothing: 0.05
   m_AirControl: 1
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60c86d5d80bad248b060d140304194d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerOne: {fileID: 0}
+  controller: {fileID: 64182907}
   runSpeed: 20
 --- !u!1 &75150447
 GameObject:
@@ -770,7 +770,7 @@ GameObject:
   - component: {fileID: 558808833}
   - component: {fileID: 558808832}
   - component: {fileID: 558808831}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Layer_0001_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -892,7 +892,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 633855309}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0059, y: 0.0712, z: 0}
+  m_LocalPosition: {x: 0.0094, y: 0.0735, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 64182905}
@@ -922,7 +922,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 659944836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0007, y: -0.0821, z: 0}
+  m_LocalPosition: {x: 0.0058, y: -0.0756, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 64182905}
@@ -1730,7 +1730,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2019870108}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LAYER01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

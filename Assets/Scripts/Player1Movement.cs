@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player1Movement : MonoBehaviour
 {
 
-    public CharacterController2D controllerOne;
+    public CharacterController2D controller;
     public float runSpeed = 20f;
     float horizontalMove = 0f;
     bool jump = false;
@@ -33,7 +33,7 @@ public class Player1Movement : MonoBehaviour
 
     void FixedUpdate () 
     {
-        controllerOne.Move(horizontalMove * Time.fixedDeltaTime, false, false);
+        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
         jump = false;
     }
 }
