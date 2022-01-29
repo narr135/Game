@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player1Movment : MonoBehaviour
+public class Player1Movement : MonoBehaviour
 {
 
-    public CharacterController2D controller1;
-    public float runSpeed = 40f;
+    public CharacterController2D controllerOne;
+    public float runSpeed = 20f;
     float horizontalMove = 0f;
     bool jump = false;
+    bool crouch = false;
 
     void Start()
     {
@@ -21,12 +22,18 @@ public class Player1Movment : MonoBehaviour
         if (Input.GetButtonDown("Jump")){
             jump = true;
         }
+
+        if (Input.GetButtonDown("Crouch")){
+            crouch = true;
+        }
+        else if (Input.GetButtonUp("Crouch")){
+            crouch = false;
+        }
     }
 
     void FixedUpdate () 
     {
-        controller1.Move(horizontalMove * Time.fixedDeltaTime, false, false);
+        controllerOne.Move(horizontalMove * Time.fixedDeltaTime, false, false);
         jump = false;
-        
     }
 }
