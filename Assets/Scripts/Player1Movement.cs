@@ -18,6 +18,7 @@ public class Player1Movement : MonoBehaviour
     private LayerMask _attackMask;
     [SerializeField]
     private float runSpeed = 20f;
+    [SerializeField]
     private float horizontalMove = 0f;
     private bool jump = false;
     private bool crouch = false;
@@ -70,6 +71,7 @@ public class Player1Movement : MonoBehaviour
 
         if (health <= 0)
         {
+            FindObjectOfType<gamemanager>().gameOver();
             animator.SetTrigger("isDead");
             animator.SetBool("isDeadBool", true);
             isDead = true;

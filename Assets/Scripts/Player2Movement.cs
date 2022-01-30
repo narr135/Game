@@ -69,6 +69,7 @@ public class Player2Movement : MonoBehaviour
 
         if (health2 <= 0)
         {
+            FindObjectOfType<gamemanager>().gameOver();
             animator.SetTrigger("isDead2");
             animator.SetBool("isDeadBool2", true);
             isDead2 = true;
