@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player1Movement : Player, IDamageble
+public class Player1Movement : MonoBehaviour
 {
 
     public CharacterController1 controller;
@@ -10,12 +10,13 @@ public class Player1Movement : Player, IDamageble
     public float runSpeed = 20f;
     [Header("Player Properties")]
     [SerializeField]
+    private int health;
+    [SerializeField]
     private Transform _attackPoint;
     [SerializeField]
     private float _attackRange;
     [SerializeField]
     private LayerMask _attackMask;
-    public int Health {get; set;}
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
@@ -37,23 +38,26 @@ public class Player1Movement : Player, IDamageble
 
     public void Damage()
     {
-        Health -= 90;
-        animator.SetInteger("Health", Health);
+        health -= 90;
+        animator.SetInteger("Health", health);
         animator.SetBool("isAttacked", true);
     }
 
     private void Attack() 
     {
-        Collider2D[] objs = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _attackMask);
+        // Collider2D[] objs = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _attackMask);
 
-        foreach (var obj in objs)
-        {
-            if (obj.TryGetComponent(out IDamageble hit))
-            {
-                hit.Damage();
-                animator.SetBool("isAttacked", false);
-            }
-        }
+        // foreach (var obj in objs)
+        // {
+        //     if (obj.TryGetComponent(out IDamageble hit))
+        //     {
+        //         hit.Damage();
+        //         animator.SetBool("isAttacked", false);
+        //     }
+        // }
+
+
+
     }
 
     void Update()

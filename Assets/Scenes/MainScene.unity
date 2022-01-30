@@ -321,11 +321,14 @@ MonoBehaviour:
   controller: {fileID: 64182907}
   animator: {fileID: 64182909}
   runSpeed: 20
+<<<<<<< Updated upstream
   _attackPoint: {fileID: 935320611}
   _attackRange: 1
   _attackMask:
     serializedVersion: 2
     m_Bits: 64
+=======
+>>>>>>> Stashed changes
 --- !u!95 &64182909
 Animator:
   serializedVersion: 3
@@ -1706,7 +1709,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292332442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4, y: -0.93, z: 0}
+  m_LocalPosition: {x: 2.7, y: -0.93, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 0.75}
   m_Children:
   - {fileID: 1323155341}
@@ -1731,11 +1734,14 @@ MonoBehaviour:
   controller: {fileID: 1292332448}
   animator: {fileID: 1292332450}
   runSpeed: 20
+<<<<<<< Updated upstream
   _attackPoint: {fileID: 1098878514}
   _attackRange: 0.5
   _attackMask:
     serializedVersion: 2
     m_Bits: 64
+=======
+>>>>>>> Stashed changes
 --- !u!114 &1292332448
 MonoBehaviour:
   m_ObjectHideFlags: 0

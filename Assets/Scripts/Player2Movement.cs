@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player2Movement : Player, IDamageble
+public class Player2Movement : MonoBehaviour
 {
 
     public CharacterController2 controller;
@@ -10,12 +10,13 @@ public class Player2Movement : Player, IDamageble
     public float runSpeed = 20f;
     [Header("Player Properties")]
     [SerializeField]
+    private int health;
+    [SerializeField]
     private Transform _attackPoint;
     [SerializeField]
     private float _attackRange;
     [SerializeField]
     private LayerMask _attackMask;
-    public int Health {get; set;}
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
@@ -37,8 +38,8 @@ public class Player2Movement : Player, IDamageble
 
     public void Damage()
     {
-        Health -= 90;
-        animator.SetInteger("Health2", Health);
+        health -= 90;
+        animator.SetInteger("Health2", health);
         animator.SetBool("isAttacked2", true);
     }
 
