@@ -11,8 +11,6 @@ public class Player2Movement : MonoBehaviour
     public Animator enemyAnimator;
     [Header("Player Properties")]
     [SerializeField]
-    private int maxHealth2;
-    [SerializeField]
     private Transform _attackPoint;
     [SerializeField]
     private float _attackRange = 0.5f;
@@ -24,12 +22,11 @@ public class Player2Movement : MonoBehaviour
     private bool jump = false;
     private bool crouch = false;
     public static  bool isDead2 = false;
-    public static int health2;
+    public static float health2;
 
     void Start()
     {
-        health2 = maxHealth2;
-        // HealthBar2.setMaxHealth2(health2);
+        health2 = hp2.mHealth;
     }
 
     // private void OnDrawGizmos()
@@ -44,8 +41,7 @@ public class Player2Movement : MonoBehaviour
 
     public void Damaged2()
     {
-        Player1Movement.health -= 30;
-        // HealthBar.setHealth(Player1Movement.health);
+        Player1Movement.health -= 30f;
         enemyAnimator.SetTrigger("isAttacked");
     }
 
