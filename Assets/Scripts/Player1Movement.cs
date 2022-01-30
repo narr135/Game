@@ -14,7 +14,7 @@ public class Player1Movement : MonoBehaviour
     [SerializeField]
     private Transform _attackPoint;
     [SerializeField]
-    private float _attackRange;
+    private float _attackRange = 1f;
     [SerializeField]
     private LayerMask _attackMask;
     float horizontalMove = 0f;
@@ -45,17 +45,16 @@ public class Player1Movement : MonoBehaviour
 
     private void Attack() 
     {
-        // Collider2D[] objs = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _attackMask);
-
-        // foreach (var obj in objs)
-        // {
-        //     if (obj.TryGetComponent(out IDamageble hit))
-        //     {
-        //         hit.Damage();
-        //         animator.SetBool("isAttacked", false);
-        //     }
-        // }
-
+        animator.SetTrigger("isAttacking");
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _attackMask);
+        foreach (var enemy in enemies)
+        {
+            // if (enemy.TryGetComponent(out IDamageble hit))
+            // {
+            //     hit.Damage();
+            // }
+            Debug.Log("hit" + enemy.name);
+        }
 
 
     }

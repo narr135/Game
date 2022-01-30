@@ -43,20 +43,20 @@ public class Player2Movement : MonoBehaviour
         animator.SetBool("isAttacked2", true);
     }
 
-    private void Attack2() 
+    private void Attack2()
     {
-        Collider2D[] objs = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _attackMask);
-
-        foreach (var obj in objs)
+        animator.SetTrigger("isAttacking2");
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _attackMask);
+        foreach (var enemy in enemies)
         {
-            if (obj.TryGetComponent(out IDamageble hit))
-            {
-                hit.Damage();
-                animator.SetBool("isAttacked2", false);
-            }
+            // if (enemy.TryGetComponent(out IDamageble hit))
+            // {
+            //     hit.Damage();
+            // }
+            Debug.Log("hit" + enemy.name);
         }
     }
-
+    
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal2") * runSpeed;
