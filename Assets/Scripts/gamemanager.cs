@@ -21,7 +21,6 @@ public class gamemanager : MonoBehaviour
         if (gameEnded == false)
         {
             gameEnded = true;
-            Debug.Log("GAME OVER");
             gameOverScreen.SetActive(true);
             while (Input.GetButtonDown("Fire1") && Input.GetButtonDown("Fire2"))
             {
