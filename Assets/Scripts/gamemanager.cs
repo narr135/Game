@@ -61,6 +61,7 @@ public class gamemanager : MonoBehaviour
 
     public void gameRestart()
     {
+        gameEnded = false;
         gameOverScreen.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
