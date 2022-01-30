@@ -7,23 +7,26 @@ public class Player1Movement : MonoBehaviour
 
     public CharacterController1 controller;
     public Animator animator;
+    public Animator enemyAnimator2;
     public float runSpeed = 20f;
     [Header("Player Properties")]
     [SerializeField]
-    private int health;
+    private int maxHealth;
     [SerializeField]
     private Transform _attackPoint;
     [SerializeField]
     private float _attackRange = 1f;
     [SerializeField]
     private LayerMask _attackMask;
-    float horizontalMove = 0f;
-    bool jump = false;
-    bool crouch = false;
+    private float horizontalMove = 0f;
+    private bool jump = false;
+    private bool crouch = false;
+    public static bool isDead = false;
+    public static int health;
 
     void Start()
     {
-
+        health = maxHealth;
     }
 
     // private void OnDrawGizmos()
@@ -36,26 +39,26 @@ public class Player1Movement : MonoBehaviour
     //     Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
     // }
 
-    public void Damage()
+    public void Damaged()
     {
-        health -= 90;
-        animator.SetInteger("Health", health);
-        animator.SetBool("isAttacked", true);
+        Player2Movement.health2 -= 30;
+        enemyAnimator2.SetTrigger("isAttacked2");
     }
 
-    private void Attack() 
+    private void Attack()
     {
-        animator.SetTrigger("isAttacking");
         Collider2D[] enemies = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _attackMask);
         foreach (var enemy in enemies)
         {
-            // if (enemy.TryGetComponent(out IDamageble hit))
-            // {
-            //     hit.Damage();
-            // }
-            Debug.Log("hit" + enemy.name);
-        }
+            if (enemy.name == this.name)
+            {
 
+            }
+            else
+            {
+                Damaged();
+            }
+        }
 
     }
 
@@ -65,12 +68,20 @@ public class Player1Movement : MonoBehaviour
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
+        if (health <= 0)
+        {
+            animator.SetTrigger("isDead");
+            animator.SetBool("isDeadBool", true);
+            isDead = true;
+            runSpeed = 0f;
+        }
+
         if (Input.GetButtonDown("Jump")) {
             jump = true;
         }
 
         if (Input.GetButtonDown("Fire1")) {
-            animator.SetBool("isAttacking", true);
+            animator.SetTrigger("isAttacking");
         }
 
         if (Input.GetButtonDown("Crouch")) {
@@ -79,11 +90,6 @@ public class Player1Movement : MonoBehaviour
         else if (Input.GetButtonUp("Crouch")) {
             crouch = false;
         }
-    }
-
-    public void onAttacking()
-    {
-        animator.SetBool("isAttacking", false);
     }
 
     void FixedUpdate ()
