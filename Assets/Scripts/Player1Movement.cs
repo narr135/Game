@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player1Movement : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class Player1Movement : MonoBehaviour
     void Start()
     {
         health = maxHealth;
-        healthBar.setMaxHealth(maxHealth);
+        // HealthBar.setMaxHealth(maxHealth);
     }
 
     // private void OnDrawGizmos()
@@ -44,7 +45,7 @@ public class Player1Movement : MonoBehaviour
     public void Damaged()
     {
         Player2Movement.health2 -= 30;
-        healthBar2.setHealth2(Player2Movement.health2);
+        // HealthBar2.setHealth2(Player2Movement.health2);
         enemyAnimator2.SetTrigger("isAttacked2");
     }
 
