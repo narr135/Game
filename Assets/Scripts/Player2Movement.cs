@@ -7,24 +7,26 @@ public class Player2Movement : MonoBehaviour
 
     public CharacterController2 controller;
     public Animator animator;
+    public Animator enemyAnimator;
     public float runSpeed = 20f;
     [Header("Player Properties")]
     [SerializeField]
-    private int maxHealth;
+    private int maxHealth2;
     [SerializeField]
     private Transform _attackPoint;
     [SerializeField]
-    private float _attackRange;
+    private float _attackRange = 0.5f;
     [SerializeField]
     private LayerMask _attackMask;
-    float horizontalMove = 0f;
-    bool jump = false;
-    bool crouch = false;
-    int health;
+    private float horizontalMove = 0f;
+    private bool jump = false;
+    private bool crouch = false;
+    public static  bool isDead2 = false;
+    public static int health2;
 
     void Start()
     {
-        health = maxHealth;
+        health2 = maxHealth2;
     }
 
     // private void OnDrawGizmos()
@@ -39,52 +41,46 @@ public class Player2Movement : MonoBehaviour
 
     public void Damaged2()
     {
-        health -= 90;
-        animator.SetTrigger("isAttacked2");
-    }
-
-    public void Died2()
-    {
-        if (health <= 0)
-        {
-            animator.SetTrigger("isDead2");
-        }
+        Player1Movement.health -= 30;
+        enemyAnimator.SetTrigger("isAttacked");
     }
 
     private void Attack2()
     {
-        animator.SetTrigger("isAttacking2");
         Collider2D[] enemies = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _attackMask);
         foreach (var enemy in enemies)
         {
-            // if (enemy.TryGetComponent(out IDamageble hit))
-            // {
-            //     hit.Damage();
-            // }
             if (enemy.name == this.name)
             {
 
             }
             else
             {
-                Debug.Log("hit" + enemy.name);
+                Damaged2();
             }
         }
     }
-    
+
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal2") * runSpeed;
 
         animator.SetFloat("Speed2", Mathf.Abs(horizontalMove));
 
+        if (health2 <= 0)
+        {
+            animator.SetTrigger("isDead2");
+            animator.SetBool("isDeadBool2", true);
+            isDead2 = true;
+            runSpeed = 0f;
+        }
 
         if (Input.GetButtonDown("Jump2")) {
             jump = true;
         }
 
         if (Input.GetButtonDown("Fire2")) {
-            Attack2();
+            animator.SetTrigger("isAttacking2");
         }
 
         if (Input.GetButtonDown("Crouch2")) {

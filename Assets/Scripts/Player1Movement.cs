@@ -7,6 +7,7 @@ public class Player1Movement : MonoBehaviour
 
     public CharacterController1 controller;
     public Animator animator;
+    public Animator enemyAnimator2;
     public float runSpeed = 20f;
     [Header("Player Properties")]
     [SerializeField]
@@ -17,10 +18,11 @@ public class Player1Movement : MonoBehaviour
     private float _attackRange = 1f;
     [SerializeField]
     private LayerMask _attackMask;
-    float horizontalMove = 0f;
-    bool jump = false;
-    bool crouch = false;
-    int health;
+    private float horizontalMove = 0f;
+    private bool jump = false;
+    private bool crouch = false;
+    public static bool isDead = false;
+    public static int health;
 
     void Start()
     {
@@ -39,35 +41,22 @@ public class Player1Movement : MonoBehaviour
 
     public void Damaged()
     {
-        health -= 90;
-        animator.SetTrigger("isAttacked");
-    }
-
-    public void Died()
-    {
-        if (health <= 0)
-        {
-            animator.SetTrigger("isDead");
-        }
+        Player2Movement.health2 -= 30;
+        enemyAnimator2.SetTrigger("isAttacked2");
     }
 
     private void Attack()
     {
-        animator.SetTrigger("isAttacking");
         Collider2D[] enemies = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _attackMask);
         foreach (var enemy in enemies)
         {
-            // if (enemy.TryGetComponent(out IDamageble hit))
-            // {
-            //     hit.Damage();
-            // }
             if (enemy.name == this.name)
             {
 
             }
             else
             {
-                Debug.Log("hit" + enemy.name);
+                Damaged();
             }
         }
 
@@ -79,12 +68,20 @@ public class Player1Movement : MonoBehaviour
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
+        if (health <= 0)
+        {
+            animator.SetTrigger("isDead");
+            animator.SetBool("isDeadBool", true);
+            isDead = true;
+            runSpeed = 0f;
+        }
+
         if (Input.GetButtonDown("Jump")) {
             jump = true;
         }
 
         if (Input.GetButtonDown("Fire1")) {
-            Attack();
+            animator.SetTrigger("isAttacking");
         }
 
         if (Input.GetButtonDown("Crouch")) {
