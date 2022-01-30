@@ -26,15 +26,15 @@ public class Player1Movement : MonoBehaviour
 
     }
 
-    // private void OnDrawGizmos()
-    // {
-    //     if (_attackPoint is null) {
-    //         return;
-    //     }
+    private void OnDrawGizmos()
+    {
+        if (_attackPoint is null) {
+            return;
+        }
 
-    //     Gizmos.color = Color.red;
-    //     Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
-    // }
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
+    }
 
     public void Damage()
     {
