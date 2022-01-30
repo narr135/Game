@@ -321,14 +321,11 @@ MonoBehaviour:
   controller: {fileID: 64182907}
   animator: {fileID: 64182909}
   runSpeed: 20
-<<<<<<< Updated upstream
   _attackPoint: {fileID: 935320611}
   _attackRange: 1
   _attackMask:
     serializedVersion: 2
     m_Bits: 64
-=======
->>>>>>> Stashed changes
 --- !u!95 &64182909
 Animator:
   serializedVersion: 3
@@ -1734,14 +1731,11 @@ MonoBehaviour:
   controller: {fileID: 1292332448}
   animator: {fileID: 1292332450}
   runSpeed: 20
-<<<<<<< Updated upstream
   _attackPoint: {fileID: 1098878514}
   _attackRange: 0.5
   _attackMask:
     serializedVersion: 2
     m_Bits: 64
-=======
->>>>>>> Stashed changes
 --- !u!114 &1292332448
 MonoBehaviour:
   m_ObjectHideFlags: 0
