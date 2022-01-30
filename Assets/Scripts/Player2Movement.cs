@@ -10,7 +10,7 @@ public class Player2Movement : MonoBehaviour
     public float runSpeed = 20f;
     [Header("Player Properties")]
     [SerializeField]
-    private int health;
+    private int maxHealth;
     [SerializeField]
     private Transform _attackPoint;
     [SerializeField]
@@ -20,27 +20,35 @@ public class Player2Movement : MonoBehaviour
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
+    int health;
 
     void Start()
     {
-
+        health = maxHealth;
     }
 
-    private void OnDrawGizmos()
-    {
-        if (_attackPoint is null) {
-            return;
-        }
+    // private void OnDrawGizmos()
+    // {
+    //     if (_attackPoint is null) {
+    //         return;
+    //     }
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
-    }
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
+    // }
 
-    public void Damage()
+    public void Damaged2()
     {
         health -= 90;
-        animator.SetInteger("Health2", health);
-        animator.SetBool("isAttacked2", true);
+        animator.SetTrigger("isAttacked2");
+    }
+
+    public void Died2()
+    {
+        if (health <= 0)
+        {
+            animator.SetTrigger("isDead2");
+        }
     }
 
     private void Attack2()
@@ -53,7 +61,14 @@ public class Player2Movement : MonoBehaviour
             // {
             //     hit.Damage();
             // }
-            Debug.Log("hit" + enemy.name);
+            if (enemy.name == this.name)
+            {
+
+            }
+            else
+            {
+                Debug.Log("hit" + enemy.name);
+            }
         }
     }
     
@@ -69,7 +84,7 @@ public class Player2Movement : MonoBehaviour
         }
 
         if (Input.GetButtonDown("Fire2")) {
-            animator.SetBool("isAttacking2", true);
+            Attack2();
         }
 
         if (Input.GetButtonDown("Crouch2")) {
@@ -78,11 +93,6 @@ public class Player2Movement : MonoBehaviour
         else if (Input.GetButtonUp("Crouch2")) {
             crouch = false;
         }
-    }
-
-    public void onAttacking2()
-    {
-        animator.SetBool("isAttacking2", false);
     }
 
     void FixedUpdate ()

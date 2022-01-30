@@ -10,7 +10,7 @@ public class Player1Movement : MonoBehaviour
     public float runSpeed = 20f;
     [Header("Player Properties")]
     [SerializeField]
-    private int health;
+    private int maxHealth;
     [SerializeField]
     private Transform _attackPoint;
     [SerializeField]
@@ -20,30 +20,38 @@ public class Player1Movement : MonoBehaviour
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
+    int health;
 
     void Start()
     {
-
+        health = maxHealth;
     }
 
-    private void OnDrawGizmos()
-    {
-        if (_attackPoint is null) {
-            return;
-        }
+    // private void OnDrawGizmos()
+    // {
+    //     if (_attackPoint is null) {
+    //         return;
+    //     }
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
-    }
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
+    // }
 
-    public void Damage()
+    public void Damaged()
     {
         health -= 90;
-        animator.SetInteger("Health", health);
-        animator.SetBool("isAttacked", true);
+        animator.SetTrigger("isAttacked");
     }
 
-    private void Attack() 
+    public void Died()
+    {
+        if (health <= 0)
+        {
+            animator.SetTrigger("isDead");
+        }
+    }
+
+    private void Attack()
     {
         animator.SetTrigger("isAttacking");
         Collider2D[] enemies = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _attackMask);
@@ -53,9 +61,15 @@ public class Player1Movement : MonoBehaviour
             // {
             //     hit.Damage();
             // }
-            Debug.Log("hit" + enemy.name);
-        }
+            if (enemy.name == this.name)
+            {
 
+            }
+            else
+            {
+                Debug.Log("hit" + enemy.name);
+            }
+        }
 
     }
 
@@ -70,7 +84,7 @@ public class Player1Movement : MonoBehaviour
         }
 
         if (Input.GetButtonDown("Fire1")) {
-            animator.SetBool("isAttacking", true);
+            Attack();
         }
 
         if (Input.GetButtonDown("Crouch")) {
@@ -79,11 +93,6 @@ public class Player1Movement : MonoBehaviour
         else if (Input.GetButtonUp("Crouch")) {
             crouch = false;
         }
-    }
-
-    public void onAttacking()
-    {
-        animator.SetBool("isAttacking", false);
     }
 
     void FixedUpdate ()
