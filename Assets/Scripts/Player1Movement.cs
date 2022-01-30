@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player1Movement : MonoBehaviour
 {
@@ -8,25 +9,25 @@ public class Player1Movement : MonoBehaviour
     public CharacterController1 controller;
     public Animator animator;
     public Animator enemyAnimator2;
-    public float runSpeed = 20f;
     [Header("Player Properties")]
-    [SerializeField]
-    private int maxHealth;
     [SerializeField]
     private Transform _attackPoint;
     [SerializeField]
     private float _attackRange = 1f;
     [SerializeField]
     private LayerMask _attackMask;
+    [SerializeField]
+    private float runSpeed = 20f;
+    [SerializeField]
     private float horizontalMove = 0f;
     private bool jump = false;
     private bool crouch = false;
     public static bool isDead = false;
-    public static int health;
+    public static float health;
 
     void Start()
     {
-        health = maxHealth;
+        health = hp1.mHealth;
     }
 
     // private void OnDrawGizmos()
@@ -70,6 +71,7 @@ public class Player1Movement : MonoBehaviour
 
         if (health <= 0)
         {
+            FindObjectOfType<gamemanager>().gameOver();
             animator.SetTrigger("isDead");
             animator.SetBool("isDeadBool", true);
             isDead = true;
