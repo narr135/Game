@@ -21,7 +21,6 @@ public class Player2Movement : MonoBehaviour
     private float horizontalMove = 0f;
     private bool jump = false;
     private bool crouch = false;
-    public static  bool isDead2 = false;
     public static float health2;
 
     void Start()
@@ -72,8 +71,6 @@ public class Player2Movement : MonoBehaviour
             FindObjectOfType<gamemanager>().gameOver();
             animator.SetTrigger("isDead2");
             animator.SetBool("isDeadBool2", true);
-            isDead2 = true;
-            runSpeed = 0f;
         }
 
         if (Input.GetButtonDown("Jump2")) {
