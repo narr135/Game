@@ -8,7 +8,6 @@ public class Player1Movement : MonoBehaviour
     public CharacterController1 controller;
     public Animator animator;
     public Animator enemyAnimator2;
-    public float runSpeed = 20f;
     [Header("Player Properties")]
     [SerializeField]
     private int maxHealth;
@@ -18,6 +17,8 @@ public class Player1Movement : MonoBehaviour
     private float _attackRange = 1f;
     [SerializeField]
     private LayerMask _attackMask;
+    [SerializeField]
+    private float runSpeed = 20f;
     private float horizontalMove = 0f;
     private bool jump = false;
     private bool crouch = false;
@@ -27,6 +28,7 @@ public class Player1Movement : MonoBehaviour
     void Start()
     {
         health = maxHealth;
+        healthBar.setMaxHealth(maxHealth);
     }
 
     // private void OnDrawGizmos()
@@ -42,6 +44,7 @@ public class Player1Movement : MonoBehaviour
     public void Damaged()
     {
         Player2Movement.health2 -= 30;
+        healthBar2.setHealth2(Player2Movement.health2);
         enemyAnimator2.SetTrigger("isAttacked2");
     }
 
