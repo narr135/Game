@@ -70,7 +70,7 @@ public class Player1Movement : MonoBehaviour
 
         if (health <= 0)
         {
-            FindObjectOfType<gamemanager>().gameOver();
+            FindObjectOfType<timer>().gameEnded = true;
             animator.SetTrigger("isDead");
             animator.SetBool("isDeadBool", true);
         }
