@@ -6,92 +6,93 @@ using UnityEngine.UI;
 public class Player2Movement : MonoBehaviour
 {
 
-    public CharacterController2 controller;
-    public Animator animator;
-    public Animator enemyAnimator;
-    [Header("Player Properties")]
-    [SerializeField]
-    private Transform _attackPoint;
-    [SerializeField]
-    private float _attackRange = 0.5f;
-    [SerializeField]
-    private LayerMask _attackMask;
-    [SerializeField]
-    private float runSpeed = 20f;
-    private float horizontalMove = 0f;
-    private bool jump = false;
-    private bool crouch = false;
-    public static float health2;
+	public CharacterController2 controller;
+	public Animator animator;
+	public Animator enemyAnimator;
+	[Header("Player Properties")]
+	[SerializeField]
+	private Transform _attackPoint;
+	[SerializeField]
+	private float _attackRange = 0.5f;
+	[SerializeField]
+	private LayerMask _attackMask;
+	[SerializeField]
+	public float runSpeed = 20f;
+	public float horizontalMove = 0f;
+	private bool jump = false;
+	private bool crouch = false;
+	public static float health2;
 
-    void Start()
-    {
-        health2 = hp2.mHealth;
-    }
+	void Start()
+	{
+		health2 = hp2.mHealth;
+	}
 
-    // private void OnDrawGizmos()
-    // {
-    //     if (_attackPoint is null) {
-    //         return;
-    //     }
+	// private void OnDrawGizmos()
+	// {
+	//     if (_attackPoint is null) {
+	//         return;
+	//     }
 
-    //     Gizmos.color = Color.red;
-    //     Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
-    // }
+	//     Gizmos.color = Color.red;
+	//     Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
+	// }
 
-    public void Damaged2()
-    {
-        Player1Movement.health -= 30f;
-        enemyAnimator.SetTrigger("isAttacked");
-    }
+	public void Damaged2()
+	{
+		Player1Movement.health -= 30f;
+		enemyAnimator.SetTrigger("isAttacked");
+	}
 
-    private void Attack2()
-    {
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _attackMask);
-        foreach (var enemy in enemies)
-        {
-            if (enemy.name == this.name)
-            {
+	private void Attack2()
+	{
+		Collider2D[] enemies = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _attackMask);
+		foreach (var enemy in enemies)
+		{
+			if (enemy.name == this.name)
+			{
 
-            }
-            else
-            {
-                Damaged2();
-            }
-        }
-    }
+			}
+			else
+			{
+				Damaged2();
+			}
+		}
+	}
 
-    void Update()
-    {
-        horizontalMove = Input.GetAxisRaw("Horizontal2") * runSpeed;
+	void Update()
+	{
+		horizontalMove = Input.GetAxisRaw("Horizontal2") * runSpeed;
 
-        animator.SetFloat("Speed2", Mathf.Abs(horizontalMove));
+		animator.SetFloat("Speed2", Mathf.Abs(horizontalMove));
 
-        if (health2 <= 0)
-        {
-            FindObjectOfType<timer>().gameEnded = true;
-            animator.SetTrigger("isDead2");
-            animator.SetBool("isDeadBool2", true);
-        }
+		if (health2 <= 0)
+		{
+			horizontalMove = 0;
+			FindObjectOfType<timer>().gameEnded = true;
+			animator.SetTrigger("isDead2");
+			animator.SetBool("isDeadBool2", true);
+		}
 
-        if (Input.GetButtonDown("Jump2")) {
-            jump = true;
-        }
+		if (Input.GetButtonDown("Jump2")) {
+			jump = true;
+		}
 
-        if (Input.GetButtonDown("Fire2")) {
-            animator.SetTrigger("isAttacking2");
-        }
+		if (Input.GetButtonDown("Fire2")) {
+			animator.SetTrigger("isAttacking2");
+		}
 
-        if (Input.GetButtonDown("Crouch2")) {
-            crouch = true;
-        }
-        else if (Input.GetButtonUp("Crouch2")) {
-            crouch = false;
-        }
-    }
+		if (Input.GetButtonDown("Crouch2")) {
+			crouch = true;
+		}
+		else if (Input.GetButtonUp("Crouch2")) {
+			crouch = false;
+		}
+	}
 
-    void FixedUpdate ()
-    {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
-        jump = false;
-    }
+	void FixedUpdate ()
+	{
+		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+		jump = false;
+	}
 }
