@@ -28,7 +28,9 @@ public class timer : MonoBehaviour
         startInstructions = GameObject.Find("Start Instructions");
         restartInstructions = GameObject.Find("Restart Instructions");
         player1.GetComponent<Player1Movement>().enabled = false;
+        player1.GetComponent<CharacterController1>().enabled = false;
         player2.GetComponent<Player2Movement>().enabled = false;
+        player2.GetComponent<CharacterController2>().enabled = false;
         gameOverScreen.SetActive(false);
         gameStartScreen.SetActive(true);
         restartInstructions.SetActive(false);
@@ -39,6 +41,13 @@ public class timer : MonoBehaviour
         if (Input.GetButton("Fire1") && Input.GetButton("Fire2"))
         {
             timerStart();
+        }
+        if (timerActive == true && !Input.GetButton("Fire1") && !Input.GetButton("Fire2"))
+        {
+            restartInstructions.SetActive(true);
+            timerText.enabled = false;
+            timerActive = false;
+            timeLeft = 3f;
         }
         if (gameEnded == true)
         {
@@ -68,6 +77,7 @@ public class timer : MonoBehaviour
         timerActive = true;
         if (timerActive == true)
         {
+            timerText.enabled = true;
             timeLeft -= Time.deltaTime;
             timerText.text = (timeLeft).ToString("0");
             restartInstructions.SetActive(false);
@@ -79,13 +89,6 @@ public class timer : MonoBehaviour
                 timeLeft = 4f;
                 gameStart();
             }
-            else if (!Input.GetButton("Fire1") && !Input.GetButton("Fire2"))
-            {
-                restartInstructions.SetActive(true);
-                timerText.enabled = false;
-                timerActive = false;
-                timeLeft = 4f;
-            }
         }
     }
 
@@ -93,14 +96,14 @@ public class timer : MonoBehaviour
     {
         gameOverScreen.SetActive(true);
         player1.GetComponent<Player1Movement>().enabled = false;
+        player1.GetComponent<CharacterController1>().enabled = false;
         player2.GetComponent<Player2Movement>().enabled = false;
+        player2.GetComponent<CharacterController2>().enabled = false;
         if (Input.GetButton("Fire1") && Input.GetButton("Fire2"))
         {
             gameStartScreen.SetActive(false);
-            player1.GetComponent<Player1Movement>().enabled = true;
-            player2.GetComponent<Player2Movement>().enabled = true;
-            gameRestart();
             gameEnded = false;
+            gameRestart();
         }
     }
 }
