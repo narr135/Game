@@ -28,9 +28,7 @@ public class timer : MonoBehaviour
 		startInstructions = GameObject.Find("Start Instructions");
 		restartInstructions = GameObject.Find("Restart Instructions");
 		player1.GetComponent<Player1Movement>().enabled = false;
-		player1.GetComponent<CharacterController1>().enabled = false;
 		player2.GetComponent<Player2Movement>().enabled = false;
-		player2.GetComponent<CharacterController2>().enabled = false;
 		gameOverScreen.SetActive(false);
 		gameStartScreen.SetActive(true);
 		restartInstructions.SetActive(false);
@@ -61,12 +59,8 @@ public class timer : MonoBehaviour
 		gameStartScreen.SetActive(false);
 		startInstructions.SetActive(true);
 		gameName.SetActive(true);
-		//player1.SetActive(true);
-		//player2.SetActive(true);
 		player1.GetComponent<Player1Movement>().enabled = true;
-		player1.GetComponent<CharacterController1>().enabled = true;
 		player2.GetComponent<Player2Movement>().enabled = true;
-		player2.GetComponent<CharacterController2>().enabled = true;
 	}
 
 	public void gameRestart()
@@ -99,13 +93,8 @@ public class timer : MonoBehaviour
 	public void gameOver()
 	{
 		gameOverScreen.SetActive(true);
-		//player1.SetActive(false);
-		//player2.SetActive(false);
 		player1.GetComponent<Player1Movement>().enabled = false;
-		player1.GetComponent<CharacterController1>().enabled = false;
 		player2.GetComponent<Player2Movement>().enabled = false;
-		player2.GetComponent<CharacterController2>().enabled = false;
-		Time.timeScale = 0;
 		if (Input.GetButton("Fire1") && Input.GetButton("Fire2"))
 		{
 			gameStartScreen.SetActive(false);

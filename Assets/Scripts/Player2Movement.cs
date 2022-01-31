@@ -17,8 +17,8 @@ public class Player2Movement : MonoBehaviour
 	[SerializeField]
 	private LayerMask _attackMask;
 	[SerializeField]
-	private float runSpeed = 20f;
-	private float horizontalMove = 0f;
+	public float runSpeed = 20f;
+	public float horizontalMove = 0f;
 	private bool jump = false;
 	private bool crouch = false;
 	public static float health2;
@@ -68,6 +68,7 @@ public class Player2Movement : MonoBehaviour
 
 		if (health2 <= 0)
 		{
+			horizontalMove = 0;
 			FindObjectOfType<timer>().gameEnded = true;
 			animator.SetTrigger("isDead2");
 			animator.SetBool("isDeadBool2", true);

@@ -17,9 +17,9 @@ public class Player1Movement : MonoBehaviour
 	[SerializeField]
 	private LayerMask _attackMask;
 	[SerializeField]
-	private float runSpeed = 20f;
+	public float runSpeed = 20f;
 	[SerializeField]
-	private float horizontalMove = 0f;
+	public float horizontalMove = 0f;
 	private bool jump = false;
 	private bool crouch = false;
 	public static float health;
@@ -41,7 +41,7 @@ public class Player1Movement : MonoBehaviour
 
 	public void Damaged()
 	{
-		Player2Movement.health2 -= 30;
+		Player2Movement.health2 -= 30f;
 		enemyAnimator2.SetTrigger("isAttacked2");
 	}
 
@@ -70,6 +70,7 @@ public class Player1Movement : MonoBehaviour
 
 		if (health <= 0)
 		{
+			horizontalMove = 0;
 			FindObjectOfType<timer>().gameEnded = true;
 			animator.SetTrigger("isDead");
 			animator.SetBool("isDeadBool", true);
