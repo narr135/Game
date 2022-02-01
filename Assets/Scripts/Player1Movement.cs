@@ -18,7 +18,6 @@ public class Player1Movement : MonoBehaviour
 	private LayerMask _attackMask;
 	[SerializeField]
 	public float runSpeed = 20f;
-	[SerializeField]
 	public float horizontalMove = 0f;
 	private bool jump = false;
 	private bool crouch = false;
