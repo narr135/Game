@@ -54,7 +54,7 @@ public class timer : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetButtonDown("Cancel") && gamePaused == false)
+		if (Input.GetButtonDown("Pause") && gamePaused == false)
 		{
 			gamePaused = true;
 			Time.timeScale = 0;
@@ -68,7 +68,7 @@ public class timer : MonoBehaviour
 			player1.GetComponent<Player1Movement>().enabled = false;
 			player2.GetComponent<Player2Movement>().enabled = false;
 		}
-		else if (Input.GetButtonDown("Cancel") && gamePaused == true)
+		else if (Input.GetButtonDown("Pause") && gamePaused == true)
 		{
 			gamePaused = false;
 			GameContinue();
