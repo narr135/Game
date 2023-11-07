@@ -157,7 +157,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.timeline": {
+<<<<<<< Updated upstream
       "version": "1.8.2",
+=======
+      "version": "1.8.6",
+>>>>>>> Stashed changes
       "depth": 0,
       "source": "registry",
       "dependencies": {

@@ -105,9 +105,14 @@ public class Player1Movement : MonoBehaviour
 			this.GetComponent<Player1Movement>().enabled = false;
 		}
 
+<<<<<<< Updated upstream
 		if (Input.GetButtonDown("Crouch"))
 		{
 			crouch = true;
+=======
+		if (Input.GetButtonDown("Crouch")) {
+			crouch = false;
+>>>>>>> Stashed changes
 		}
 		else if (Input.GetButtonUp("Crouch"))
 		{

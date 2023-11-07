@@ -108,7 +108,7 @@ public class Player2Movement : MonoBehaviour
 		}
 
 		if (Input.GetButtonDown("Crouch2")) {
-			crouch = true;
+			crouch = false;
 		}
 		else if (Input.GetButtonUp("Crouch2")) {
 			crouch = false;
