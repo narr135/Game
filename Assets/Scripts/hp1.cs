@@ -13,7 +13,7 @@ public class hp1 : MonoBehaviour
     public void Start()
     {
         HealthBar = GetComponent<Image>();
-        Player1 = FindObjectOfType<Player1Movement>();
+        Player1 = FindFirstObjectByType<Player1Movement>();
     }
 
     public void Update()

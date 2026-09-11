@@ -18,17 +18,20 @@ public class Player1Movement : MonoBehaviour
 	private LayerMask _attackMask;
 	[SerializeField]
 	private float runSpeed = 20f;
-	public float horizontalMove = 0f;
+    [SerializeField]
+    private float stunDuration = 0.5f;
+	private float horizontalMove = 0f;
 	private bool jump = false;
 	private bool crouch = false;
 	public static float health;
-	private float stunDuration = 0.5f;
 	private GameObject enemyPlayer2;
+	public GameObject gameManager;
 
 	void Start()
 	{
 		health = hp1.mHealth;
 		enemyPlayer2 = GameObject.Find("Player2");
+		gameManager = GameObject.Find("Game Manager");
 	}
 
 	// private void OnDrawGizmos()
@@ -79,7 +82,12 @@ public class Player1Movement : MonoBehaviour
 		this.GetComponent<Player1Movement>().enabled = true;
 	}
 
-	void Update()
+    private void stoppedDamaged()
+    {
+        enemyPlayer2.GetComponent<Player2Movement>().enabled = true;
+    }
+
+    void Update()
 	{
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
@@ -87,11 +95,12 @@ public class Player1Movement : MonoBehaviour
 
 		if (health <= 0)
 		{
-			horizontalMove = 0;
-			FindObjectOfType<timer>().gameEnded = true;
+            Debug.Log("player dead");
+            horizontalMove = 0;
 			animator.SetFloat("Speed", 0f);
 			animator.SetTrigger("isDead");
 			animator.SetBool("isDeadBool", true);
+            gameManager.GetComponent<timer>().GameOver();
 		}
 
 		if (Input.GetButtonDown("Jump"))
@@ -106,7 +115,7 @@ public class Player1Movement : MonoBehaviour
 		}
 
 		if (Input.GetButtonDown("Crouch")) {
-			crouch = false;
+			crouch = true;
 		}
 		else if (Input.GetButtonUp("Crouch"))
 		{

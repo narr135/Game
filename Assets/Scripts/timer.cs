@@ -13,19 +13,19 @@ public class timer : MonoBehaviour
 	public bool gameStarted;
 	public bool gamePaused;
 	public TextMeshProUGUI timerText;
-	public Collider2D collider1;
-	public Collider2D collider2;
-	public GameObject gameOverScreen;
-	public GameObject gameStartScreen;
-	public GameObject pauseScreen;
-	public GameObject player1;
-	public GameObject player2;
-	public GameObject gameName;
-	public GameObject startInstructions;
-	public GameObject restartInstructions;
-	public Button continueButton;
-	public Button restartButton;
-	public Button exitButton;
+	private Collider2D collider1;
+    private Collider2D collider2;
+    private GameObject gameOverScreen;
+    private GameObject gameStartScreen;
+    private GameObject pauseScreen;
+    private GameObject player1;
+    private GameObject player2;
+    private GameObject gameName;
+    private GameObject startInstructions;
+    private GameObject restartInstructions;
+    public Button continueButton;
+    public Button restartButton;
+    public Button exitButton;
 
 	private void Start()
 	{
@@ -184,6 +184,7 @@ public class timer : MonoBehaviour
 	public void GameOver()
 	{
 		Time.timeScale = 1;
+		gameEnded = true;
 		gameOverScreen.SetActive(true);
 		player1.GetComponent<Player1Movement>().enabled = false;
 		player2.GetComponent<Player2Movement>().enabled = false;

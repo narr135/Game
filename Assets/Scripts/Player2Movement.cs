@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,18 +19,21 @@ public class Player2Movement : MonoBehaviour
 	private LayerMask _attackMask;
 	[SerializeField]
 	private float runSpeed = 20f;
-	public float horizontalMove = 0f;
+    [SerializeField]
+    private float stunDuration2 = 0.5f;
+	private float horizontalMove = 0f;
 	private bool jump = false;
 	private bool crouch = false;
 	public static float health2;
-	public float stunDuration2 = 0.5f;
 	private GameObject enemyPlayer;
+    public GameObject gameManager;
 
-	void Start()
+    void Start()
 	{
 		health2 = hp2.mHealth;
 		enemyPlayer = GameObject.Find("Player1");
-	}
+        gameManager = GameObject.Find("Game Manager");
+    }
 
 	// private void OnDrawGizmos()
 	// {
@@ -91,12 +95,13 @@ public class Player2Movement : MonoBehaviour
 
 		if (health2 <= 0)
 		{
+			Debug.Log("player2 dead");
 			horizontalMove = 0;
-			FindObjectOfType<timer>().gameEnded = true;
 			animator.SetTrigger("isDead2");
 			animator.SetFloat("Speed2", 0f);
 			animator.SetBool("isDeadBool2", true);
-		}
+            gameManager.GetComponent<timer>().GameOver();
+        }
 
 		if (Input.GetButtonDown("Jump2")) {
 			jump = true;
@@ -108,7 +113,7 @@ public class Player2Movement : MonoBehaviour
 		}
 
 		if (Input.GetButtonDown("Crouch2")) {
-			crouch = false;
+			crouch = true;
 		}
 		else if (Input.GetButtonUp("Crouch2")) {
 			crouch = false;

@@ -8,12 +8,12 @@ public class hp2 : MonoBehaviour
     public Image HealthBar;
     public float curHealth;
     public static float mHealth = 100f;
-    Player2Movement Player2;
+    // Player2Movement Player2;
 
     public void Start()
     {
         HealthBar = GetComponent<Image>();
-        Player2 = FindObjectOfType<Player2Movement>();
+        // Player2 = FindObjectOfType<Player2Movement>();
     }
 
     public void Update()
