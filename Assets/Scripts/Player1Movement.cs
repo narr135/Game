@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+
 
 public class Player1Movement : MonoBehaviour
 {
@@ -50,14 +52,6 @@ public class Player1Movement : MonoBehaviour
 		enemyAnimator2.SetTrigger("isAttacked2");
 		enemyPlayer2.GetComponent<Player2Movement>().enabled = false;
 		enemyAnimator2.SetFloat("Speed2", 0f);
-		for (float i = 0; i < stunDuration; i = i + 1f)
-		{
-			if (stunDuration <= 0)
-			{
-				enemyPlayer2.GetComponent<Player2Movement>().enabled = true;
-			}
-			stunDuration -= Time.deltaTime;
-		}
 	}
 
 	private void Attack()
@@ -114,12 +108,20 @@ public class Player1Movement : MonoBehaviour
 			this.GetComponent<Player1Movement>().enabled = false;
 		}
 
-		if (Input.GetButtonDown("Crouch")) {
+		if (Input.GetButtonDown("Crouch"))
+		{
 			crouch = true;
 		}
 		else if (Input.GetButtonUp("Crouch"))
 		{
 			crouch = false;
+		}
+		
+		if (stunDuration > 0)
+		{
+			stunDuration -= Time.deltaTime;
+		} else {
+			enemyPlayer2.GetComponent<Player2Movement>().enabled = true;
 		}
 	}
 

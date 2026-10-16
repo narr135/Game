@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+
 
 public class Player2Movement : MonoBehaviour
 {
@@ -51,14 +53,6 @@ public class Player2Movement : MonoBehaviour
 		enemyAnimator.SetTrigger("isAttacked");
 		enemyPlayer.GetComponent<Player1Movement>().enabled = false;
 		enemyAnimator.SetFloat("Speed", 0f);
-		for (float i = 0; i < stunDuration2; i = i + 1f)
-		{
-			if (stunDuration2 <= 0)
-			{
-				enemyPlayer.GetComponent<Player2Movement>().enabled = true;
-			}
-			stunDuration2 -= Time.deltaTime;
-		}
 	}
 
 	private void Attack2()
@@ -103,20 +97,31 @@ public class Player2Movement : MonoBehaviour
             gameManager.GetComponent<timer>().GameOver();
         }
 
-		if (Input.GetButtonDown("Jump2")) {
+		if (Input.GetButtonDown("Jump2"))
+		{
 			jump = true;
 		}
 
-		if (Input.GetButtonDown("Fire2")) {
+		if (Input.GetButtonDown("Fire2"))
+		{
 			animator.SetTrigger("isAttacking2");
 			this.GetComponent<Player2Movement>().enabled = false;
 		}
 
-		if (Input.GetButtonDown("Crouch2")) {
+		if (Input.GetButtonDown("Crouch2"))
+		{
 			crouch = true;
 		}
-		else if (Input.GetButtonUp("Crouch2")) {
+		else if (Input.GetButtonUp("Crouch2"))
+		{
 			crouch = false;
+		}
+
+		if (stunDuration2 <= 0)
+		{
+			stunDuration2 -= Time.deltaTime;
+		} else {
+			enemyPlayer.GetComponent<Player1Movement>().enabled = true;
 		}
 	}
 
