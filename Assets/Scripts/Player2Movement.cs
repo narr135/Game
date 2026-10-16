@@ -8,126 +8,110 @@ using UnityEngine.InputSystem;
 
 public class Player2Movement : MonoBehaviour
 {
-
-	public CharacterController2 controller;
-	public Animator animator;
-	public Animator enemyAnimator;
-	[Header("Player Properties")]
-	[SerializeField]
-	private Transform _attackPoint;
-	[SerializeField]
-	private float _attackRange = 0.5f;
-	[SerializeField]
-	private LayerMask _attackMask;
-	[SerializeField]
-	private float runSpeed = 20f;
+    public CharacterController2 controller;
+    public Animator animator;
+    public Animator enemyAnimator;
+    [Header("Player Properties")]
+    [SerializeField]
+    private Transform _attackPoint;
+    [SerializeField]
+    private float _attackRange = 0.5f;
+    [SerializeField]
+    private LayerMask _attackMask;
+    [SerializeField]
+    private float runSpeed = 20f;
     [SerializeField]
     private float stunDuration2 = 0.5f;
-	private float horizontalMove = 0f;
-	private bool jump = false;
-	private bool crouch = false;
-	public static float health2;
-	private GameObject enemyPlayer;
+    private float horizontalMove = 0f;
+    private bool jump = false;
+    private bool crouch = false;
+    public static float health2;
+    private GameObject enemyPlayer;
     public GameObject gameManager;
 
     void Start()
-	{
-		health2 = hp2.mHealth;
-		enemyPlayer = GameObject.Find("Player1");
+    {
+        health2 = hp2.mHealth;
+        enemyPlayer = GameObject.Find("Player1");
         gameManager = GameObject.Find("Game Manager");
     }
 
-	// private void OnDrawGizmos()
-	// {
-	//     if (_attackPoint is null) {
-	//         return;
-	//     }
+    public void Damaged2()
+    {
+        Player1Movement.health -= 30f;
+        enemyAnimator.SetTrigger("isAttacked");
+        enemyPlayer.GetComponent<Player1Movement>().enabled = false;
+        enemyAnimator.SetFloat("Speed", 0f);
+    }
 
-	//     Gizmos.color = Color.red;
-	//     Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
-	// }
+    private void Attack2()
+    {
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _attackMask);
+        foreach (var enemy in enemies)
+        {
+            if (enemy.name == this.name) { }
+            else
+            {
+                Damaged2();
+            }
+        }
+    }
 
-	public void Damaged2()
-	{
-		Player1Movement.health -= 30f;
-		enemyAnimator.SetTrigger("isAttacked");
-		enemyPlayer.GetComponent<Player1Movement>().enabled = false;
-		enemyAnimator.SetFloat("Speed", 0f);
-	}
+    private void stoppedAttacking2()
+    {
+        this.GetComponent<Player2Movement>().enabled = true;
+    }
 
-	private void Attack2()
-	{
-		Collider2D[] enemies = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _attackMask);
-		foreach (var enemy in enemies)
-		{
-			if (enemy.name == this.name)
-			{
+    private void stoppedDamaged2()
+    {
+        enemyPlayer.GetComponent<Player1Movement>().enabled = true;
+    }
 
-			}
-			else
-			{
-				Damaged2();
-			}
-		}
-	}
+    void Update()
+    {
+        var input = GameInput.Instance;
+        if (input == null) return;
 
-	private void stoppedAttacking2()
-	{
-		this.GetComponent<Player2Movement>().enabled = true;
-	}
+        horizontalMove = input.Move2 * runSpeed;
 
-	private void stoppedDamaged2()
-	{
-		enemyPlayer.GetComponent<Player1Movement>().enabled = true;
-	}
+        animator.SetFloat("Speed2", Mathf.Abs(horizontalMove));
 
-	void Update()
-	{
-		horizontalMove = Input.GetAxisRaw("Horizontal2") * runSpeed;
-
-		animator.SetFloat("Speed2", Mathf.Abs(horizontalMove));
-
-		if (health2 <= 0)
-		{
-			Debug.Log("player2 dead");
-			horizontalMove = 0;
-			animator.SetTrigger("isDead2");
-			animator.SetFloat("Speed2", 0f);
-			animator.SetBool("isDeadBool2", true);
+        if (health2 <= 0)
+        {
+            Debug.Log("player2 dead");
+            horizontalMove = 0;
+            animator.SetTrigger("isDead2");
+            animator.SetFloat("Speed2", 0f);
+            animator.SetBool("isDeadBool2", true);
             gameManager.GetComponent<timer>().GameOver();
         }
 
-		if (Input.GetButtonDown("Jump2"))
-		{
-			jump = true;
-		}
+        if (input.Jump2Pressed)
+        {
+            jump = true;
+        }
 
-		if (Input.GetButtonDown("Fire2"))
-		{
-			animator.SetTrigger("isAttacking2");
-			this.GetComponent<Player2Movement>().enabled = false;
-		}
+        if (input.Fire2Pressed)
+        {
+            animator.SetTrigger("isAttacking2");
+            this.GetComponent<Player2Movement>().enabled = false;
+        }
 
-		if (Input.GetButtonDown("Crouch2"))
-		{
-			crouch = true;
-		}
-		else if (Input.GetButtonUp("Crouch2"))
-		{
-			crouch = false;
-		}
+        crouch = input.Crouch2Held;
 
-		if (stunDuration2 <= 0)
-		{
-			stunDuration2 -= Time.deltaTime;
-		} else {
-			enemyPlayer.GetComponent<Player1Movement>().enabled = true;
-		}
-	}
+        if (stunDuration2 <= 0)
+        {
+            stunDuration2 -= Time.deltaTime;
+        }
+        else
+        {
+            enemyPlayer.GetComponent<Player1Movement>().enabled = true;
+        }
+    }
 
-	void FixedUpdate ()
-	{
-		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
-		jump = false;
-	}
+    void FixedUpdate()
+    {
+        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+        jump = false;
+    }
 }
